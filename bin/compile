@@ -4,13 +4,25 @@ indent() {
   sed -u 's/^/       /'
 }
 
-echo "-----> Found a hello.txt"
+#echo "-----> Found a hello.txt"
 
 # if hello.txt is empty, abort the build
-if [ ! -s $1/hello.txt ]; then
-  echo "hello.txt was empty" | indent
-  exit 1
-fi
+#if [ ! -s $1/hello.txt ]; then
+#  echo "hello.txt was empty" | indent
+#  exit 1
+#fi
 
 # replace hello with goodbye in a new file
-cat $1/hello.txt | sed -e "s/[Hh]ello/Goodbye/g" > $1/goodbye.txt
+#cat $1/hello.txt | sed -e "s/[Hh]ello/Goodbye/g" > $1/goodbye.txt
+
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+
+apt-get update
+
+apt-get -y install xvfb google-chrome-stable unzip
+
+wget http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+
+mv chromedriver /usr/local/bin/

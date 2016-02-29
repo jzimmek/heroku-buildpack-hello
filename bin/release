@@ -2,10 +2,8 @@
 
 cat << EOF
 ---
-addons:
-  - shared-database:5mb
 config_vars:
-  PATH: bin:/usr/bin:/bin
+  PATH: bin:/usr/bin:/bin:/usr/local/bin
 default_process_types:
-  hello: cat hello.txt
+  chromedriver: xvfb-run -a --server-args="-screen 0 1366x768x24" chromedriver --url-base=/wd/hub
 EOF
