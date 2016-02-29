@@ -15,14 +15,16 @@ indent() {
 # replace hello with goodbye in a new file
 #cat $1/hello.txt | sed -e "s/[Hh]ello/Goodbye/g" > $1/goodbye.txt
 
-echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | tee -a /etc/apt/sources.list
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 
-apt-get update
+sudo apt-get update
 
-apt-get -y install xvfb google-chrome-stable unzip
+sudo apt-get -y install xvfb google-chrome-stable unzip
+
+cd /tmp
 
 wget http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 
-mv chromedriver /usr/local/bin/
+sudo mv chromedriver /usr/local/bin/
