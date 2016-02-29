@@ -27,5 +27,4 @@ cd /tmp
 wget http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 
-echo "111"
-mv ./chromedriver /usr/local/bin/
+sudo cp ./chromedriver /usr/local/bin/
